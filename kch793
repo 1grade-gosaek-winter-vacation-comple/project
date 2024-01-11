@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define T 100//T를 100이라고 정의 
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char *argv[]) {
+	srand(time(NULL));//프로그램을 실행 할때마다 랜덤 난수 안겹치게 설정 
+	int i,j,temp,n;
+	int data[T]; 
+	 
+	printf("데이터 수: ");
+	scanf("%d",&n);
+	
+	for(i=0;i<n;i++) data[i] = rand() % T+1;//난수 랜덤생성(1~100까지)
+	
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n-1-i;j++)
+		{
+			if(data[j]>data[j+1]){
+				temp = data[j+1];
+				data[j+1] = data[j];
+				data[j] = temp;
+			}
+		}
+	} 
+	
+	for(i=0;i<n;i++) printf("%d ",data[i]);
+	
+	
+	return 0;
+}
